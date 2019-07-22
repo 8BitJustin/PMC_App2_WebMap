@@ -21,9 +21,12 @@ map = folium.Map(location=[41.988748, -112.635234], zoom_start=5,
 fg = folium.FeatureGroup(name="My Map")
 
 for lt, ln, nm, el in zip(lat, lon, name, elev):
-    fg.add_child(folium.Marker(location=[lt,ln],
-                               popup=nm + " " + str(el),
-                               icon=folium.Icon(color=color_prod(el))))
+    fg.add_child(folium.CircleMarker(location=[lt,ln],
+                                    radius=6,
+                                    popup=nm + " " + str(el),
+                                    fill_color=color_prod(el),
+                                    color='grey',
+                                    fill_opacity=0.7))
 
 map.add_child(fg)
 
